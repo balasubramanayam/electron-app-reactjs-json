@@ -1,0 +1,20 @@
+{
+  "Data": [
+    {
+      "id": "1",
+      "name": "Balasubramanyam",
+      "email": "abc@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "bc57",
+      "name": "Bala",
+      "email": "abcd@gmail.com"
+    },
+    {
+      "id": "a8a1",
+      "name": "fghjk",
+      "email": "df"
+    }
+  ]
+}
