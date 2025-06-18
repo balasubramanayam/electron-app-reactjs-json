@@ -133,7 +133,7 @@ mainWindow.loadURL(startUrl);
 
 //mainWindow.loadURL('http://localhost:3000'); 
 
-// mainWindow.loadURL('https://esignzstaging.relevantz.com'); 
+// mainWindow.loadURL('https://staging'); 
 
  
 
