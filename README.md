@@ -1,4 +1,6 @@
-Step 1 : 
+Electron Framework setup: 
+
+Step 1: 
 
 mkdir my-electron-app && cd my-electron-app 
 
@@ -51,135 +53,92 @@ Then created dependencies
 
  
 
-Then create main.js 
+Step 3: 
 
- 
+Then create main.js in electron folder 
 
+  
 const { app, BrowserWindow, Menu } = require('electron'); 
-
 const path = require('path'); 
-
 const URL = require('url'); 
-
  
-
 let mainWindow; 
-
  
-
 app.on('ready', () => { 
-
   mainWindow = new BrowserWindow({ 
-
     width: 800, 
-
     height: 600, 
-
-    webPreferences: { 
-
+    fullscreen: true,   
+   webPreferences: { 
       nodeIntegration: true, 
-
       contextIsolation: true, 
-
     }, 
-
-  }); 
-
+  });  
  
-
   mainWindow.webContents.session.webRequest.onHeadersReceived((details, callback) => { 
-
     callback({ 
-
       responseHeaders: { 
-
         ...details.responseHeaders, 
-
         'Content-Security-Policy': [ 
-
-          "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:5000;", 
-
+          "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' http://192.168.11.70:8008/;", 
         ], 
-
-      }, 
-
-    }); 
-
+      },     
+   });  
   }); 
-
- 
-
   
-
  
-
-  const startUrl = URL.format({ 
-
-    pathname: path.join(__dirname, './crud/build/index.html'), 
-
+ 
+ const startUrl = URL.format({ 
+    pathname: path.join(__dirname, './taskbuddy/build/index.html'), 
     protocol: 'file:', 
-
     slashes: true, 
-
   }); 
-
    
-
 mainWindow.loadURL(startUrl); 
-
  
-
+ 
 //mainWindow.loadFile('D:/Electron/electron-app/crud/build/index.html');  
-
 //mainWindow.loadURL('http://localhost:3000'); 
-
-// mainWindow.loadURL('https://staging'); 
-
+//mainWindow.loadURL('https://esignzstaging.relevantz.com'); 
  
-
 mainWindow.webContents.openDevTools(); 
-
  
-
 mainWindow.webContents.on('context-menu', (event, params) => { 
-
     const menu = Menu.buildFromTemplate([ 
-
       { 
-
         label: 'Inspect', 
-
         click: () => { 
-
           mainWindow.webContents.inspectElement(params.x, params.y); 
-
-        }, 
-
+        },  
       }, 
-
     ]); 
-
     menu.popup(mainWindow); 
-
   }); 
-
+ 
+  mainWindow.reload(true); 
+  mainWindow.setFullScreen(true);  
+  mainWindow.setKiosk(false);  
    
-
-  
-
 });   
 
  
 
  
 
- Implement with React app and build react app 
-then add home "homepage": ".", in package.json in app 
-
-Re build again 
+ 
 
  
 
+Step 4: 
+
+Implement with React app so create react app and add "homepage" :  ".",  
+in package.json in react app then build app using npm run build 
+
+ 
+
+ 
+
+Step 5: 
 Add build path in main.js and backend server url 
 
 Then run using npx electron . 
@@ -191,15 +150,11 @@ If we want automatic restart use npm i nodemon in electron package.json add like
   "start": "nodemon --watch main.js --exec electron ." 
 
 } 
- 
 
  
+------------------------------------------------------------------------------------------------------------------ 
 
- 
-
- 
-
-To improve your desktop app built with React.js and Electron, you can focus on enhancing functionality, optimizing performance, improving user experience, and adding advanced features.  
+To improve desktop app built with React.js and Electron, enhancing functionality, optimizing performance, improving user experience, and adding advanced features.  
 
 1. Enhance Functionality State Management: Use libraries like Redux or Context API for better state management in complex apps.  
 
